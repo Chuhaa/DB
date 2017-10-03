@@ -11,8 +11,9 @@
         $username = strip_tags($_POST['name']);
         $password = strip_tags($_POST['password']);
         $email=($_POST['email']);
+        $phone=($_POST['phone']);
         $db = mysqli_connect("localhost", "root", '', "db") or die ("Failed to connect");
-        $query = "INSERT INTO customer(name,password,email) VALUES('$username', '$password','$email')";
+        $query = "INSERT INTO customer(name,password,email,phone_no) VALUES('$username', '$password','$email','$phone')";
         $result = mysqli_query($db,$query);
         if($result) {
             echo "Succesfully registered";
@@ -35,6 +36,7 @@
     <input type="text" name = "name" placeholder="Enter username">
     <input type="password" name="password" placeholder="Enter password here">
     <input type="text" name="email" placeholder="Enter mail here">
+    <input type="int" name=phone" placeholder="Enter ph no">
 
     <input type="submit" name="submit" value="Register">
 </form>
