@@ -17,7 +17,7 @@
 </head>
 <body>
 <form action = "login.php">
-    <input type="submit" name="redirect" value = "Go back to home">
+    <input type="submit" name="redirect" value = "login to system">
 </form>
 </body>
 </html>

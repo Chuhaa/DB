@@ -15,14 +15,13 @@ else {
     die();
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Welcome user</title>
 </head>
 <body>
-<h3>Welcome customer <?php echo $username; ?>. </h3>
+<h3>Welcome bus operator <?php echo $username; ?>. </h3>
 <form action="index.php">
     <input type="submit" name="logout" value="Logout">
 </form>

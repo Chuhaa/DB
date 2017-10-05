@@ -32,15 +32,38 @@
 </head>
 <body>
 <h1>Register</h1>
-<form method="post" action="signup.php">
-    <input type="text" name = "name" placeholder="Enter username">
-    <input type="password" name="password" placeholder="Enter password here">
-    <input type="text" name="email" placeholder="Enter mail here">
-    <input type="int" name=phone" placeholder="Enter ph no">
+<?php
+echo "BECOME BUS OPERATOR"
+?>
 
-    <input type="submit" name="submit" value="Register">
+<form method="post" action="bussignup.php">
+    <input type="submit" name="bus" value="bus">
+
 </form>
-<a href = "login.php" >Login</a>
+<?php
+
+echo "SIGNUP AS CUSTOMER";
+?>
+
+    <form method="post" action="signup.php">
+            <input type="text" name = "name" placeholder="Enter username">
+            <input type="password" name="password" placeholder="Enter password here">
+            <input type="text" name="email" placeholder="Enter mail here">
+            <input type="int" name=phone" placeholder="Enter ph no">
+
+        <input type="submit" name="submit" value="Register">
+            </form>
+
+<?php
+if (isset($_POST['bus'])){
+    ?>
+<a href = "bussignup.php" >Login</a>
+
+
+
+           <?php }
+           ?>
+
 
 </body>
 </html>
