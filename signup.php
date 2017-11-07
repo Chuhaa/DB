@@ -12,10 +12,14 @@
         $password = strip_tags($_POST['password']);
         $email=($_POST['email']);
         $phone=($_POST['phone']);
-        $db = mysqli_connect("localhost", "root", '', "db") or die ("Failed to connect");
-        $query = "INSERT INTO customer(name,password,email,phone_no) VALUES('$username', '$password','$email','$phone')";
+        $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
+        $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
+        $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";
+
         $result = mysqli_query($db,$query);
-        if($result) {
+        $resultlogin = mysqli_query($db,$querylogin);
+
+        if($resultlogin and $result) {
             echo "Succesfully registered";
             header('Location: login.php');
         }

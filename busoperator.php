@@ -7,8 +7,15 @@
  */
 
 session_start();
-if (isset($_SESSION['id'])){
-    $username = $_SESSION['username'];
+if (isset($_SESSION['email'])){
+    $email = $_SESSION['email'];
+    $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
+    $sql1 = "SELECT * FROM bus_operator WHERE email = '$email'";
+    $query=mysqli_query($db,$sql1);
+    if ($query){
+        $row = mysqli_fetch_row($query);
+        $username=$row[1];
+    }
 }
 else {
     header('Location: index.php');

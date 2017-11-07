@@ -7,19 +7,21 @@
  */
 session_start();
 if(isset($_POST['submit'])) {
-    $db = mysqli_connect("localhost", "root", '', "db") or die ("Failed to connect");
+    $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
     $email = ($_POST['email']);
-    $sql1 = "SELECT * FROM bus WHERE email = '$email'";
+    $sql1 = "SELECT * FROM login WHERE email = '$email'";
     $result1 = mysqli_query($db, $sql1) or die(mysqli_error());
     if (mysqli_num_rows($result1) > 0) {
-        $_SESSION['error']['email'] = "This Email is already used.";
+        echo  "This Email is already used.";
     } else {
         $username = strip_tags($_POST['name']);
         $password = strip_tags($_POST['password']);
         $phone = ($_POST['phone']);
-        $query = "INSERT INTO bus(name,password,email,phone_no) VALUES('$username', '$password','$email','$phone')";
+        $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','bus')";
+        $query = "INSERT INTO bus_operator(name,email,ph_number) VALUES('$username','$email','$phone')";
         $result = mysqli_query($db, $query);
-        if ($result) {
+        $resultlogin=mysqli_query($db,$querylogin);
+        if ($result and $resultlogin) {
             echo "Succesfully registered";
             header('Location: login.php');
         } else {

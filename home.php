@@ -7,8 +7,16 @@
  */
 
 session_start();
-if (isset($_SESSION['id'])){
-    $username = $_SESSION['username'];
+if (isset($_SESSION['email'])){
+    $email = $_SESSION['email'];
+    $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
+    $sql1 = "SELECT * FROM customer WHERE email = '$email'";
+    $query=mysqli_query($db,$sql1);
+    if ($query){
+        $row = mysqli_fetch_row($query);
+        $id=$row[0];
+        $username=$row[1];
+    }
 
 
 }
@@ -26,15 +34,14 @@ else {
 <body>
 <h3>Welcome customer <?php echo $username; ?>. </h3>
 <?php
-$db = mysqli_connect("localhost", "root", '', "db");
+$db = mysqli_connect("localhost", "root", '', "bus_booking");
 
-$sqlcust = "SELECT book_id,username,dateb FROM booking where username = '$username'";
+$sqlcust = "SELECT booking_id,date FROM booking where customer_id = '$id'";
 $querycust=mysqli_query($db,$sqlcust);
 if ($querycust){
     $row = mysqli_fetch_row($querycust);
     $book_id = $row[0];
-    $customid = $row[1];
-    $date = $row[2];
+    $date = $row[1];
 
 echo $book_id;?>
 <?php echo $customid;?>
