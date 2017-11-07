@@ -53,6 +53,9 @@ echo $book_id;?>
 <form action="index.php">
     <input type="submit" name="logout" value="Logout">
 </form>
+<form action="update.php">
+    <input type="submit" name="Update" value="Update">
+</form>
 
 </body>
 </html>
