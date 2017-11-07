@@ -13,7 +13,8 @@ if(isset($_POST['submit'])) {
     $result1 = mysqli_query($db, $sql1) or die(mysqli_error());
     if (mysqli_num_rows($result1) > 0) {
         echo  "This Email is already used.";
-    } else {
+    }
+    else {
         $username = strip_tags($_POST['name']);
         $password = strip_tags($_POST['password']);
         $phone = ($_POST['phone']);
