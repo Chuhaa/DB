@@ -44,6 +44,10 @@ $db = mysqli_connect("localhost", "root", '', "bus_booking");
         <input type="submit" name="BookedTicket" value="BookedTicket">
 
     </form>
+<form action="update.php">
+    <input type="submit" name="update" value="update">
+
+</form>
 
 
 
