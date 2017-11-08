@@ -5,7 +5,7 @@ $email= $_SESSION['email'];
     //$id = $_POST['id'];
     //echo $email;
     $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-    $query = "select n from customer where email='$email'";
+    $query = "select name,ph_number,email from bus_operator where email='$email'";
     $result = mysqli_query($db, $query);
     if ($row = mysqli_fetch_array($result)) {
 
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
     //$email=($_POST['email']);
     $phone=($_POST['ph_number']);
     $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-    $query = "update customer set name='$username',ph_number='$phone' where email='$email '";
+    $query = "update bus_operator set name='$username',ph_number='$phone' where email='$email'";
     $result = mysqli_query($db,$query);
     if($result) {
         echo "Succesfully updated";
@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
     email:<input type="text" name="email" value="<?php echo $email;?>"readonly><br><br>
     Phoneno:<input type="int" name="ph_number" value="<?php echo $phone?>"><br><br>
 
-    <input type="submit" name="submit" value="submit">
+    <input type="submit" name="submit" value="Update">
 </form>
 </body>
 </html>
