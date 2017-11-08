@@ -16,6 +16,8 @@ if (isset($_SESSION['email'])){
         $row = mysqli_fetch_row($query);
         $id=$row[0];
         $username=$row[1];
+        $role=$row[2];
+        $role = $_SESSION['role'];
     }
 
 

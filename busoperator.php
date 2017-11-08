@@ -103,15 +103,13 @@ if($query1){
 
 </form>
 
-<form action="update_bus.php">
+<form action="update_bus.php" method="post">
     <input type="submit" name="update" value="update">
 </form>
 
-<form method="post" action="busupdate.php">
-    <input type="submit" name="addbus" value="Add Bus">
-
+<form action="reomve.php" method="post">
+    <input type="submit" name="remove" value="Remove">
 </form>
-
 </body>
 </html>
 

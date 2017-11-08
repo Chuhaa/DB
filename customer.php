@@ -48,7 +48,11 @@ $db = mysqli_connect("localhost", "root", '', "bus_booking");
     <input type="submit" name="update" value="update">
 
 </form>
+<br>
+<form action="reomve.php">
+    <input type="submit" name="remove" value="remove">
 
+</form>
 
 
 
