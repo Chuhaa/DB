@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
     //$id = $_POST['id'];
     //$email=($_POST['email']);
     $phone=($_POST['ph_number']);
-    echo $phone;
+
     $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
     $query = "update customer set name='$username',ph_number='$phone' where email='$email '";
     $result = mysqli_query($db,$query);
