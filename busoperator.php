@@ -26,7 +26,7 @@ else {
 
 ?>
 
-<?php
+<?php   
 
 if(isset($_POST['booking_detail'])){
 
