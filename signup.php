@@ -7,37 +7,43 @@
  */
 
 	session_start();
-	if(isset($_POST['submit'])){
-        $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-        $email = ($_POST['email']);
-        $sql1 = "SELECT * FROM login WHERE email = '$email'";
-        $result1 = mysqli_query($db, $sql1) or die(mysqli_error());
-        $username = strip_tags($_POST['name']);
-        if (mysqli_num_rows($result1) > 0) {
-         echo  "Provided Email is already in use";
+	if(isset($_POST['submit'])) {
+        if (($_POST['password']) != $_POST['cpassword']) {
+            echo "password do not match";
         }
-        elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)){
-            echo("$email is not a valid email address");
-        }
-        else {
-            $phone = ($_POST['phone']);
-
-            $password = strip_tags($_POST['password']);
-            if (empty($password)){
-                echo "Please enter password.";
-            }
+        else{
             $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-            $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
-            $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";
-
-            $result = mysqli_query($db, $query);
-            $resultlogin = mysqli_query($db, $querylogin);
-
-            if ($resultlogin and $result) {
-                echo "Succesfully registered";
-                header('Location: login.php');
+            $email = ($_POST['email']);
+            $sql1 = "SELECT * FROM login WHERE email = '$email'";
+            $result1 = mysqli_query($db, $sql1) or die(mysqli_error());
+            $username = strip_tags($_POST['name']);
+            if (mysqli_num_rows($result1) > 0) {
+                echo "Provided Email is already in use";
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                echo("$email is not a valid email address");
             } else {
-                echo "Failed to register";
+                $password = md5(strip_tags($_POST['password']));
+                if (empty($password)) {
+                    echo "Please enter password.";
+                } elseif (strlen(strip_tags($_POST['password'])) < 6) {
+                    echo "Too small password";
+                } else {
+                    $phone = ($_POST['phone']);
+
+                    $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
+                    $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
+                    $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";
+
+                    $result = mysqli_query($db, $query);
+                    $resultlogin = mysqli_query($db, $querylogin);
+
+                    if ($resultlogin and $result) {
+                        echo "Succesfully registered";
+                        header('Location: login.php');
+                    } else {
+                        echo "Failed to register";
+                    }
+                }
             }
         }
     }
@@ -63,24 +69,57 @@ echo "BECOME BUS OPERATOR"
 echo "SIGNUP AS CUSTOMER";
 ?>
 
-    <form method="post" action="signup.php">
-            <input type="text" name = "name" placeholder="Enter username">
-            <input type="password" name="password" placeholder="Enter password here">
-            <input type="text" name="email" placeholder="Enter mail here">
-            <input type="int" name=phone" placeholder="Enter ph no">
 
-        <input type="submit" name="submit" value="Register">
-            </form>
+
 
 <?php
 if (isset($_POST['bus'])){
     ?>
 <a href = "bussignup.php" >Login</a>
 
+<?php }
+?>
 
+</body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head><title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript"><!--
+        function checkPasswordMatch() {
+            var password = $("#txtNewPassword").val();
+            var confirmPassword = $("#txtConfirmPassword").val();
 
-           <?php }
-           ?>
+            if (password != confirmPassword)
+                $("#divCheckPasswordMatch").html("Passwords do not match!");
+            else
+                $("#divCheckPasswordMatch").html("Passwords match.");
+        }
+        //--></script>
+</head>
+<body>
+<form method="post" action="signup.php">
+<div class="td">
+<input type="text" name = "name" placeholder="Enter username">
+</div>
+<div class="td">
+    <input type="text" name="email" placeholder="Enter mail here">
+</div>
+<div>
+    <input type="int" name=phone" placeholder="Enter ph no">
+</div>
+<div class="td">
+    <input type="password" name="password" placeholder="Password" id="txtNewPassword" />
+</div>
+<div class="td">
+    <input type="password" name="cpassword" placeholder="Confirm Password" id="txtConfirmPassword" onkeyup="checkPasswordMatch();" />
+</div>
+<div class="registrationFormAlert" id="divCheckPasswordMatch">
+</div>
+
+    <input type="submit" name="submit" value="Register">
+</form>
 
 
 </body>

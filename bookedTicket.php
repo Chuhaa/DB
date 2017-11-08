@@ -47,9 +47,8 @@ if ($querycust) {
                         <td><?php echo $row[$i]; ?></td><?php
                         $i++;
                     }
-                    $_SESSION['booking_id'] = $row[0];
+                    $_SESSION['booking_id'] = $row['booking_id'];
                     ?>
-
 
                     <td>
                         <form method="post" action="cancel.php">
