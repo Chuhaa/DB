@@ -18,7 +18,7 @@ if(isset($_POST['submit'])) {
         $username = strip_tags($_POST['name']);
         $password = strip_tags($_POST['password']);
         $phone = ($_POST['phone']);
-        $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','bus')";
+        $querylogin = "INSERT INTO login(email,password,role,status) VALUES('$email','$password','bus','active')";
         $query = "INSERT INTO bus_operator(name,email,ph_number) VALUES('$username','$email','$phone')";
         $result = mysqli_query($db, $query);
         $resultlogin=mysqli_query($db,$querylogin);

@@ -25,8 +25,9 @@ if(isset($_POST['submit'])) {
         $emailDB=$row[0];
         $passwordDB = $row[1];
         $role=$row[2];
-
-        if ($email == $emailDB && $password == $passwordDB) {
+        $status=$row[3];
+        $_SESSION['role'] = $role;
+        if ($email == $emailDB && $password == $passwordDB && $status=='active') {
             $_SESSION['email'] = $email;
             if($role=="bus") {
                 header('Location: busoperator.php');
@@ -35,7 +36,11 @@ if(isset($_POST['submit'])) {
                 header('Location: customer.php');
 
             }
-        }}
+        }
+        else{
+            echo "Your password is incorrect.";
+        }
+    }
 
 
     else {
