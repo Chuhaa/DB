@@ -11,6 +11,7 @@ session_start();
 if(isset($_POST['submit'])) {
     require('config.php');
     $email = ($_POST['email']);
+    $_SESSION['email'] = $email;
     $password = strip_tags($_POST['password']);
     $sql = "SELECT * FROM login where email = '$email'";
 
