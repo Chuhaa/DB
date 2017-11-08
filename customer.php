@@ -67,13 +67,13 @@ if ($querycust){
 
                 ?>
 
-                <tr>
-                    <td><?php echo $row[0]; ?></td>
-                    <td><?php echo $row[1]; ?></td>
-                    <td><?php echo $row[2]; ?></td>
-                    <td><?php echo $row[3]; ?></td>
-                    <td><?php echo $row[4]; ?></td>
-                    <td><?php echo $row[5]; ?></td>
+                <tr><?php
+                    $i=0;
+                    while($i<8){
+                        ?><td><?php echo $row[$i]; ?></td><?php
+                    $i++;
+                    }?>
+
                     <td>
                         <button type="button"> Cancel</button>
                     </td>

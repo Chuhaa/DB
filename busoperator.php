@@ -27,29 +27,60 @@ else {
 ?>
 
 <?php
-//$con = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-//$con=new mysqli($servername,$username,$password,$dbname);
 
 if(isset($_POST['submit'])){
-    $con = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
 
-    $search_value=$_POST["submit"];
     $sql="select * from booking where operator_id=$operator_id";
-    $query1=mysqli_query($con,$sql);
-    //$row = mysqli_fetch_row($query1);
-    //echo $row[0];
+    $query1=mysqli_query($db,$sql);
 
+if($query1){
+    ?>
+    <table border="2"  style= "background-color: #f2fbff; color: #285e8e; margin: 0 auto;" >
+    <thead>
+    <tr>
+        <th>  Book Id  </th>
+        <th>  Date   </th>
+        <th>  Time  </th>
+        <th>  Arrive Place  </th>
+        <th>  Depature Place  </th>
+        <th>  Seat No  </th>
+        <th>  Payment Status  </th>
+
+
+
+    </tr>
+    </thead
+    <table>
+    <style>
+    table{
+        font-size: large;
+        }
+    </style>
+
+    <?php
 
     while($row = mysqli_fetch_row($query1)){
-        while(i<11){
-            echo $row[i];
-        }
 
+        ?><tr><?php
+        $i=0;
+        while($i<11){
+            ?><td><?php echo $row[$i]; ?></td><?php
+            $i++;
+        }?>
+
+    </tr>
+<?php
 
     }
+}
 
 }
 ?>
+    </table>
+
+
+
+
 
 <!DOCTYPE html>
 <html>
