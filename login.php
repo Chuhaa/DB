@@ -31,7 +31,7 @@ if(isset($_POST['submit'])) {
                 header('Location: busoperator.php');
             }
             elseif ($role="customer"){
-                header('Location: home.php');
+                header('Location: customer.php');
 
             }
         }}
