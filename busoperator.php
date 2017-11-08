@@ -25,7 +25,7 @@ else {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome user</title>
+    <title>Welcome User</title>
 </head>
 <body>
 <h3>Welcome bus operator <?php echo $username; ?>. </h3>

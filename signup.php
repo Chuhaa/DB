@@ -14,12 +14,18 @@
         $result1 = mysqli_query($db, $sql1) or die(mysqli_error());
         $username = strip_tags($_POST['name']);
         if (mysqli_num_rows($result1) > 0) {
-         echo  "This Email is already used.";
+         echo  "Provided Email is already in use";
+        }
+        elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            echo("$email is not a valid email address");
         }
         else {
             $phone = ($_POST['phone']);
 
             $password = strip_tags($_POST['password']);
+            if (empty($password)){
+                echo "Please enter password.";
+            }
             $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
             $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
             $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";

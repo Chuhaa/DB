@@ -38,6 +38,7 @@ $db = mysqli_connect("localhost", "root", '', "bus_booking");
 $sqlcust = "SELECT * FROM booking where customer_id = '$id'";
 $querycust=mysqli_query($db,$sqlcust);
 if ($querycust){
+    $datenow=date("y,m,d");
    ?>
 
     <table border="2"  style= "background-color: #f2fbff; color: #285e8e; margin: 0 auto;" >
@@ -51,7 +52,7 @@ if ($querycust){
             <th>  Seat No  </th>
 
         </tr>
-        </thead>
+        </thead
         <tbody>
         <style>
             table{
@@ -61,22 +62,26 @@ if ($querycust){
 
         <?php
 
-        while($row=  mysqli_fetch_array($querycust))
-        {
-            ?>
+        while($row=  mysqli_fetch_array($querycust)) {
+            if ($datenow < $row[1]) {
 
-            <tr>
-                <td><?php echo $row[0]; ?></td>
-                <td><?php echo $row[1]; ?></td>
-                <td><?php echo $row[2]; ?></td>
-                <td><?php echo $row[3]; ?></td>
-                <td><?php echo $row[4]; ?></td>
-                <td><?php echo $row[5]; ?></td>
-                <td><button type="button" > Cancel </button> </td>
-            </tr>
+                ?>
+
+                <tr>
+                    <td><?php echo $row[0]; ?></td>
+                    <td><?php echo $row[1]; ?></td>
+                    <td><?php echo $row[2]; ?></td>
+                    <td><?php echo $row[3]; ?></td>
+                    <td><?php echo $row[4]; ?></td>
+                    <td><?php echo $row[5]; ?></td>
+                    <td>
+                        <button type="button"> Cancel</button>
+                    </td>
+                </tr>
 
 
-            <?php
+                <?php
+            }
         }
         ?>
     </table>
@@ -85,7 +90,9 @@ if ($querycust){
 
 <form action="index.php">
     <input type="submit" name="logout" value="Logout">
-</form>
+
+
+
 
 </body>
 </html>
