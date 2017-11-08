@@ -57,6 +57,9 @@ if(isset($_POST['update'])&& (!(empty($_POST['name'])))){
 <form action="busoperator.php">
     <input type="submit" name="back" value="Back">
 </form>
+<form action="busoperator.php">
+    <input type="submit" name="back" value="Back">
+</form>
 
 </body>
 </html>

@@ -107,8 +107,8 @@ if($query1){
     <input type="submit" name="update" value="update">
 </form>
 
-<form action="update_bus.php" method="post">
-    <input type="submit" name="update" value="update">
+<form action="reomve.php" method="post">
+    <input type="submit" name="remove" value="Remove">
 </form>
 </body>
 </html>
