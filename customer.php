@@ -90,11 +90,9 @@ if ($querycust){
 
 <form action="index.php">
     <input type="submit" name="logout" value="Logout">
-</form>
 
-<form action="update.php">
-    <input type="submit" name="update" value="Update">
-</form>
+
+
 
 </body>
 </html>
