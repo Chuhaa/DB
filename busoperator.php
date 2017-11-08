@@ -114,6 +114,7 @@ if($query1){
 <form action="busupdate.php" method="post">
     <input type="submit" name="addbus" value="Add Bus">
 </form>
+
 </body>
 </html>
 
