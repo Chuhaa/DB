@@ -92,6 +92,9 @@ if($query1){
 <form action="index.php">
     <input type="submit" name="logout" value="Logout">
 </form>
+<form action="update_bus.php">
+    <input type="submit" name="submit" value="submit">
+</form>
 
 <form action="" method="post">
     <input type="submit" name="submit" value="Booking Detail">

@@ -5,7 +5,7 @@ $email= $_SESSION['email'];
     //$id = $_POST['id'];
     //echo $email;
     $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-    $query = "select name,ph_number from customer where email='$email'";
+    $query = "select n from customer where email='$email'";
     $result = mysqli_query($db, $query);
     if ($row = mysqli_fetch_array($result)) {
 
@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
 <body>
 <h1>Your Details</h1>
 <form method="post" action="update.php">
-    
+
     name:<input type="text" name="name" value="<?php echo $username;?>"><br><br>
     email:<input type="text" name="email" value="<?php echo $email;?>"readonly><br><br>
     Phoneno:<input type="int" name="ph_number" value="<?php echo $phone?>"><br><br>
