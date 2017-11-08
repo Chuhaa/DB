@@ -28,25 +28,31 @@ else {
 
 <?php
 
-if(isset($_POST['submit'])){
+if(isset($_POST['booking_detail'])){
 
-    $sql="select * from booking where operator_id=$operator_id";
+    $sql="select * from customer natural join booking where operator_id='$operator_id'";
+
     $query1=mysqli_query($db,$sql);
+    //$sql1="select customer_id from booking where operator_id=$operator_id)";
+    //$query2=mysqli_query($db,$sql1);
 
 if($query1){
     ?>
     <table border="2"  style= "background-color: #f2fbff; color: #285e8e; margin: 0 auto;" >
     <thead>
     <tr>
-        <th>  Book Id  </th>
-        <th>  Date   </th>
+        <th>  Customer ID  </th>
+        <th>  Name   </th>
+        <th>  Phone No  </th>
+        <th>  e mail  </th>
+        <th>  Date  </th>
         <th>  Time  </th>
         <th>  Arrive Place  </th>
-        <th>  Depature Place  </th>
-        <th>  Seat No  </th>
-        <th>  Payment Status  </th>
-
-
+        <th>  Depart Place  </th>
+        <th>  Seat Number  </th>
+        <th>  Payment  </th>
+        <th>  Bus ID  </th>
+        <th>  Route ID  </th>
 
     </tr>
     </thead
@@ -60,25 +66,24 @@ if($query1){
     <?php
 
     while($row = mysqli_fetch_row($query1)){
-
         ?><tr><?php
         $i=0;
-        while($i<11){
-            ?><td><?php echo $row[$i]; ?></td><?php
+        while($i<13){
+            if($i!=5){
+                ?><td><?php echo $row[$i]; ?></td><?php
+            }
+
             $i++;
         }?>
 
-    </tr>
-<?php
+        </tr>
+        <?php
+    }
+    }
 
     }
-}
-
-}
-?>
+    ?>
     </table>
-
-
 
 
 
@@ -94,7 +99,8 @@ if($query1){
 </form>
 
 <form action="" method="post">
-    <input type="submit" name="submit" value="Booking Detail">
+    <input type="submit" name="booking_detail" value="Booking Detail">
+
 </form>
 
 <form action="update_bus.php" method="post">
