@@ -23,7 +23,7 @@ if(isset($_POST['submit'])) {
         //$query = "INSERT INTO bus_operator(name,email,ph_number) VALUES('$username','$email','$phone')";
         //$result = mysqli_query($db, $query);
         $resultlogin=mysqli_query($db,$querylogin);
-        
+
     }
 }
 ?>
