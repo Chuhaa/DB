@@ -8,23 +8,37 @@
 
 	session_start();
 	if(isset($_POST['submit'])){
-        $username = strip_tags($_POST['name']);
-        $password = strip_tags($_POST['password']);
-        $email=($_POST['email']);
-        $phone=($_POST['phone']);
         $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
-        $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
-        $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";
-
-        $result = mysqli_query($db,$query);
-        $resultlogin = mysqli_query($db,$querylogin);
-
-        if($resultlogin and $result) {
-            echo "Succesfully registered";
-            header('Location: login.php');
+        $email = ($_POST['email']);
+        $sql1 = "SELECT * FROM login WHERE email = '$email'";
+        $result1 = mysqli_query($db, $sql1) or die(mysqli_error());
+        $username = strip_tags($_POST['name']);
+        if (mysqli_num_rows($result1) > 0) {
+         echo  "Provided Email is already in use";
+        }
+        elseif (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            echo("$email is not a valid email address");
         }
         else {
-            echo "Failed to register";
+            $phone = ($_POST['phone']);
+
+            $password = strip_tags($_POST['password']);
+            if (empty($password)){
+                echo "Please enter password.";
+            }
+            $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
+            $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
+            $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";
+
+            $result = mysqli_query($db, $query);
+            $resultlogin = mysqli_query($db, $querylogin);
+
+            if ($resultlogin and $result) {
+                echo "Succesfully registered";
+                header('Location: login.php');
+            } else {
+                echo "Failed to register";
+            }
         }
     }
 ?>
