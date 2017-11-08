@@ -105,6 +105,10 @@ if($query1){
 
 <form action="update_bus.php">
     <input type="submit" name="update" value="update">
+</form>
+
+<form method="post" action="busupdate.php">
+    <input type="submit" name="addbus" value="Add Bus">
 
 </form>
 
