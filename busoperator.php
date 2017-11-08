@@ -103,6 +103,11 @@ if($query1){
 
 </form>
 
+<form action="update_bus.php">
+    <input type="submit" name="update" value="update">
+
+</form>
+
 </body>
 </html>
 
