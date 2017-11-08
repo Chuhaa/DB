@@ -20,8 +20,10 @@ if(isset($_POST['submit'])) {
         $totalseat = ($_POST['totalseat']);
         $bustype=strip_tags($_POST['bustype']);
         $querylogin = "INSERT INTO bus(name,bus_number,total_no_of_seats,type) VALUES('$busname','$busnumber','$totalseat','$bustype')";
+        //$query = "INSERT INTO bus_operator(name,email,ph_number) VALUES('$username','$email','$phone')";
+        //$result = mysqli_query($db, $query);
         $resultlogin=mysqli_query($db,$querylogin);
-
+        
     }
 }
 ?>
