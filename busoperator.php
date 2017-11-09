@@ -215,6 +215,9 @@ if($query1){
 <form action="busupdate.php" method="post">
     <input type="submit" name="addbus" value="Add Bus">
 </form>
+<form action="change_password.php">
+    <input type="submit" name="pw" value="Change Password">
+</form>
 
 </body>
 </html>

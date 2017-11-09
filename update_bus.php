@@ -17,7 +17,7 @@ mysqli_close($db);
 if(isset($_POST['update'])&& (!(empty($_POST['name'])))){
     //echo $email;
     $username = $_POST['name'];
-    echo $username;
+
     //$id = $_POST['id'];
     //$email=($_POST['email']);
     $phone=($_POST['ph_number']);
@@ -158,6 +158,7 @@ if(isset($_POST['update'])&& (!(empty($_POST['name'])))){
 <form action="busoperator.php">
     <input type="submit" name="back" value="Back">
 </form>
+
 
 </body>
 </html>
