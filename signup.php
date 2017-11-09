@@ -33,7 +33,7 @@ if(isset($_POST['submit'])) {
 
                 $db = mysqli_connect("localhost", "root", '', "bus_booking") or die ("Failed to connect");
                 $query = "INSERT INTO customer(name,email,ph_number) VALUES('$username','$email','$phone')";
-                $querylogin = "INSERT INTO login(email,password,role) VALUES('$email','$password','customer')";
+                $querylogin = "INSERT INTO login(email,password,role,status) VALUES('$email','$password','customer','active')";
 
                 $result = mysqli_query($db, $query);
                 $resultlogin = mysqli_query($db, $querylogin);

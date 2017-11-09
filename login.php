@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
     require('config.php');
     $email = ($_POST['email']);
     $_SESSION['email'] = $email;
-    $password = strip_tags(md5($_POST['password']));
+    $password = (md5(strip_tags($_POST['password'])));
     $sql = "SELECT * FROM login where email = '$email'";
 
     $db = mysqli_connect("localhost", "root", '', "bus_booking");
@@ -28,6 +28,8 @@ if(isset($_POST['submit'])) {
         $status=$row[3];
         $_SESSION['role'] = $role;
         if($status=='active') {
+            echo $passwordDB;
+            echo $password;
             if ($email == $emailDB && $password == $passwordDB) {
                 $_SESSION['email'] = $email;
                 if ($role == "bus") {

@@ -89,9 +89,9 @@ if($query1){
 
 <!DOCTYPE html>
 
-
++
 <html>
-<title>Demo|Lisenme</title>
+<title>Bus Operator</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css.css">
@@ -190,7 +190,6 @@ if($query1){
             <!-- Blog entry -->
             <div class="w3-container w3-white w3-margin w3-padding-large">
 
-                <h2 style="text-align: center";>Select Your Seat Preference</h2>
                 <br>
                 <div class="select-boxes">
                 </div>
