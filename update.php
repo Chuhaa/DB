@@ -60,5 +60,8 @@ if(isset($_POST['submit'])){
 
     <input type="submit" name="submit" value="submit">
 </form>
+<form method="post" action="busoperator.php">
+    <input type="submit" name="back" value="Back">
+</form>
 </body>
 </html>

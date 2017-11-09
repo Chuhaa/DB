@@ -111,8 +111,9 @@
     Enter Password:<input type="password" name="paw" >
     <input type="submit" name="remove" value="Remove">
 </form>
-</body>
-</html>
+<form method="post" action="busoperator.php">
+    <input type="submit" name="back" value="Back">
+</form>
 <?php
 session_start();
 $role= $_SESSION['role'];

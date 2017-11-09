@@ -211,6 +211,11 @@ if($query1){
 <form action="reomve.php" method="post">
     <input type="submit" name="remove" value="Remove">
 </form>
+
+<form action="busupdate.php" method="post">
+    <input type="submit" name="addbus" value="Add Bus">
+</form>
+
 </body>
 </html>
 
