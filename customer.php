@@ -154,7 +154,10 @@ $db = mysqli_connect("localhost", "root", '', "bus_booking");
     <input type="submit" name="remove" value="remove">
 
 </form>
+<form action="change_password.php">
+    <input type="submit" name="change" value="Change Password">
 
+</form>
 
 
 </body>
